@@ -960,6 +960,10 @@ img {
         width: 300px;
     }
 
+    .workex {
+        margin-top: 0;
+    }
+
     .qualification__box {
         display: flex;
         justify-content: space-between;
