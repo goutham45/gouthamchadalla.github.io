@@ -5,9 +5,9 @@
 
 
 ### Website Preview
-<p> 
+<p align='center'> 
   <kbd>
-    <a href="https://goutham45.github.io/gouthamchadalla.github.io/" target="_blank"><img src="examples/preview.gif">
+    <a href="https://goutham45.github.io/gouthamchadalla.github.io/" target="_blank"><img src="assets/img/Website.png">
   </a>
   </kbd>
 </p>
