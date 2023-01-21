@@ -533,6 +533,18 @@ img {
     margin: 1rem;
 }
 
+.skills__img_mysql {
+    width: 9rem;
+    height: 9rem;
+    margin: 2rem;
+}
+.skills__img_mongo {
+    width: 8rem;
+    height: 8rem;
+    margin: 0rem;
+    margin-left: 10px;
+}
+
 .skills__core-img {
     margin-top: 1rem;
     width: 9rem;
