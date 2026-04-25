@@ -53,6 +53,31 @@
     <meta name="robots" content="index" />
 
     <title>Goutham Chadalla Manjunath | Personal Portfolio</title>
+
+    <style>
+      /* Typing cursor */
+      .typing-cursor {
+        display: inline-block;
+        width: 2px;
+        height: 0.9em;
+        background: currentColor;
+        margin-left: 3px;
+        vertical-align: middle;
+        animation: blink 0.7s infinite;
+      }
+      @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+      /* Fade-in on scroll */
+      .fade-in-section {
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity 0.65s ease, transform 0.65s ease;
+      }
+      .fade-in-section.is-visible {
+        opacity: 1;
+        transform: none;
+      }
+    </style>
   </head>
 
   <body>
@@ -81,6 +106,11 @@
             <li class="nav__item">
               <a href="#about" class="nav__link" aria-label="About Tab"
                 >About</a
+              >
+            </li>
+            <li class="nav__item">
+              <a href="#workex" class="nav__link" aria-label="Work Experience Tab"
+                >Experience</a
               >
             </li>
             <li class="nav__item">
@@ -117,7 +147,7 @@
           <div class="home__data">
             <span class="home__greeting">Hello, My name is</span>
             <h1 class="home__name">Goutham Chadalla Manjunath</h1>
-            <span class="home__profession">Head of AI Engineering | Software AI Engineer</span>
+            <span class="home__profession"><span id="typing-text">Head of AI Engineering</span><span class="typing-cursor"></span></span>
             <a
               href="https://drive.google.com/file/d/1ikVsqAkv7N7oRbx7NYU9oElgNcSW2W6m/view?usp=sharing"
               class="button home__button"
@@ -259,26 +289,26 @@
             </ul>
 
             <div>
-              <span class="about__number">3+</span>
+              <span class="about__number" data-target="3+">3+</span>
               <span class="about__achievement">Years Professional Experience</span>
             </div>
 
             <div>
-              <span class="about__number">6+</span>
+              <span class="about__number" data-target="6+">6+</span>
               <span class="about__achievement"
                 >Years of Deep Domain Expertise</span
               >
             </div>
 
             <div>
-              <span class="about__number">$1.6M+</span>
+              <span class="about__number" data-target="$1.6M+">$1.6M+</span>
               <span class="about__achievement"
                 >Annual Cost Savings &amp; Revenue Growth</span
               >
             </div>
 
             <div>
-              <span class="about__number">100+</span>
+              <span class="about__number" data-target="100+">100+</span>
               <span class="about__achievement"
                 >Manual Hours Saved per Month</span
               >
@@ -385,201 +415,89 @@
       <!-- Work Experience -->
       <section class="about section rd-container" id="workex">
         <h2 class="section-title">Work Experience</h2>
-
-      <div class="divider-custom">
-        <div class="divider-custom-line"></div>
-        <div class="divider-custom-icon">
-          <i class="bx bxs-user-badge"></i>
-        </div>
-        <div class="divider-custom-line"></div>
-      </div>
-
-      <div class="">
-        <div class="">
-          <div class="education__details">
-            <h3 class="education__title">
-              <strong>Liberty Home Guard</strong>
-            </h3>
-            <span class="education__subtitle"
-              ><strong>Head of AI Engineering (Software AI Engineer)</strong></span
-            >
-            <div class="education__duration">
-              <i class="far fa-calendar-alt"></i>
-              Oct 2024 - Present
-            </div>
-            <span class="education__score"
-              ><i class="bx bx-star"></i> Brooklyn, New York, USA</span
-            >
-          </div>
-          <br />
-          <p class="">
-            <strong>●</strong>Architected and deployed multiple production AI microservices using FastAPI + Python on AWS ECS/ECR, EC2, App Runner, and ALB — writing code while also owning the team's technical direction, sprint planning, and engineering standards.<br/><br/>
-            <strong>●</strong>Designed and deployed a <strong>Voice AI agent</strong> using FastAPI, ElevenLabs, and AWS to handle claim diagnosis intake, resolutions, and live technician negotiation — eliminating procurement cycles, reducing claim processing time by <strong>40%</strong>, driving approximately <strong>$1.6M+ in annual cost savings and revenue growth</strong>.<br/><br/>
-            <strong>●</strong>Built an integrated <strong>Technician Onboarding Verification System</strong> using AWS Rekognition, combining liveness detection, face comparison, and selfie-to-ID matching with automated document extraction for COI, Trade License, and Driver's License validation — saving <strong>100+ manual hours/month</strong> and eliminating identity fraud risk.<br/><br/>
-            <strong>●</strong>Developed and embedded a <strong>Databricks Genie RAG platform</strong> with a custom semantic layer into an internal business portal, empowering business users and executives to query operational data in natural language.<br/><br/>
-          </p></div></div>
-      </section>
-
-        <section class="about section rd-container" id="workex">
-      <div class="divider-custom">
-        <div class="divider-custom-line"></div>
-        <div class="divider-custom-icon">
-          <i class="bx bxs-user-badge"></i>
-        </div>
-        <div class="divider-custom-line"></div>
-      </div>
-
-      <div class="">
-        <div class="">
-          <div class="education__details">
-            <h3 class="education__title">
-              <strong>Bragr Inc.</strong>
-            </h3>
-            <span class="education__subtitle"
-              ><strong>Artificial Intelligence Engineer</strong></span
-            >
-            <div class="education__duration">
-              <i class="far fa-calendar-alt"></i>
-              Aug 2024 - Nov 2024
-            </div>
-            <span class="education__score"
-              ><i class="bx bx-star"></i> Boston, MA, USA</span
-            >
-          </div>
-          <br />
-          <p class="">
-            <strong>●</strong>Implemented RAG pipelines (LangChain, VectorDB, Azure CosmosDB, Azure OpenAI) to query live sports data from ESPN, powering real-time betting intelligence.<br/><br/>
-            <strong>●</strong>Led full-stack development of the Bragr platform (React JS, Django) and built CI/CD pipelines via GitHub Actions for data querying, web scraping, and AI response generation.<br/><br/>
-          </p></div></div>
-      </section>
-
-        <section class="about section rd-container" id="workex">
         <div class="divider-custom">
           <div class="divider-custom-line"></div>
-          <div class="divider-custom-icon">
-            <i class="bx bxs-user-badge"></i>
-          </div>
+          <div class="divider-custom-icon"><i class="bx bxs-user-badge"></i></div>
           <div class="divider-custom-line"></div>
         </div>
 
-        <div class="">
-          <div class="">
-            <!-- <div class="">
-              <i
-                class="fas fa-graduation-cap education__details-icon"
-              ></i>
-            </div> -->
-            <div class="education__details">
-              <h3 class="education__title">
-                <strong>Harvard Medical School</strong>
-              </h3>
-              <span class="education__subtitle"
-                ><strong>Research AI Engineer (AI &amp; Data)</strong></span
-              >
-              <div class="education__duration">
-                <i class="far fa-calendar-alt"></i>
-                Feb 2024 - Oct 2024
-              </div>
-              <span class="education__score"
-                ><i class="bx bx-star"></i> Boston, MA, USA</span
-              >
-            </div>
-            <br />
-            <p class="">
-              <strong>●</strong>Created an efficient GenAI pipeline using Python, OpenAI, Streamlit, and databases with the Whisper model to transcribe and analyze doctor interviews. Implemented prompt engineering to reduce processing time by 50%.<br/><br/>
-              <strong>●</strong>Utilized Neurokit and Python-based machine learning models to analyze ECG, RR intervals, and PPG signals during surgical procedures, with a specific focus on evaluating heart rate variability and its implications for surgical outcomes.<br/><br/>
-              <strong>●</strong>Compared Neurokit results with Kubios using machine learning models for enhanced accuracy and optimized a Python codebase with a sliding window technique to expedite HRV analysis across multiple participants.<br/><br/>
-            </p></div></div>
-          </section>
-
-
-      <section class="about section rd-container" id="workex">
-
-        <div class="divider-custom">
-          <div class="divider-custom-line"></div>
-          <div class="divider-custom-icon">
-            <i class="bx bxs-user-badge"></i>
-          </div>
-          <div class="divider-custom-line"></div>
+        <!-- Liberty Home Guard -->
+        <div class="education__details" style="margin-bottom:2rem;">
+          <h3 class="education__title"><strong>Liberty Home Guard</strong></h3>
+          <span class="education__subtitle"><strong>Head of AI Engineering (Software AI Engineer)</strong></span>
+          <div class="education__duration"><i class="far fa-calendar-alt"></i> Oct 2024 – Present</div>
+          <span class="education__score"><i class="bx bx-map"></i> Brooklyn, New York, USA</span>
+          <br /><br />
+          <p>
+            <strong>●</strong> Architected and deployed multiple production AI microservices using FastAPI + Python on AWS ECS/ECR, EC2, App Runner, and ALB — writing code while also owning the team's technical direction, sprint planning, and engineering standards.<br/><br/>
+            <strong>●</strong> Designed and deployed a <strong>Voice AI agent</strong> using FastAPI, ElevenLabs, and AWS to handle claim diagnosis intake, resolutions, and live technician negotiation — reducing claim processing time by <strong>40%</strong>, driving approximately <strong>$1.6M+ in annual cost savings and revenue growth</strong>.<br/><br/>
+            <strong>●</strong> Built an integrated <strong>Technician Onboarding Verification System</strong> using AWS Rekognition with liveness detection, face comparison, and selfie-to-ID matching — saving <strong>100+ manual hours/month</strong> and eliminating identity fraud risk.<br/><br/>
+            <strong>●</strong> Developed and embedded a <strong>Databricks Genie RAG platform</strong> with a custom semantic layer into an internal business portal, empowering executives to query operational data in natural language.<br/><br/>
+          </p>
         </div>
 
-        <div class="">
-          <div class="">
-            <!-- <div class="">
-              <i
-                class="fas fa-graduation-cap education__details-icon"
-              ></i>
-            </div> -->
-            <div class="education__details">
-              <h3 class="education__title">
-                <strong>Newmark</strong>
-              </h3>
-              <span class="education__subtitle"
-                ><strong>Software Engineer</strong></span
-              >
-              <div class="education__duration">
-                <i class="far fa-calendar-alt"></i>
-                June 2023 - Jan 2024
-              </div>
-              <span class="education__score"
-                ><i class="bx bx-star"></i> New York, USA</span
-              >
-            </div>
-            <br />
-            <p class="">
-              <strong>●</strong>Utilized Langchain and Semantic Kernel to seamlessly integrate and optimize plugin connections with external services, streamlining system performance and enhancing interoperability.<br/><br/>
-              <strong>●</strong>Successfully advocated for the adoption of GenAI-powered engineering solutions, driving efficiency in project development.
-               <br/><br/>
-              <strong>●</strong>Developed an interactive chat user interface for SQL generation using Python, Langchain framework, Open AI LLMs.<br/><br/>
-              <strong>●</strong>Established a connection to a MySQL database and leveraged Matplotlib to dynamically generate charts for property intelligence representation, resulting to an innovative solution that enhanced data exploration and communication.<br/><br/>
-              <!-- <strong>●</strong>Established a connection to a MySQL database and leveraged Matplotlib to dynamically generate charts for property intelligence representation, resulting to an innovative solution that enhanced data exploration and communication.<br/><br/> -->
-            
-            </p></div></div>
-          </section>
+        <div class="divider-custom"><div class="divider-custom-line"></div><div class="divider-custom-icon"><i class="bx bxs-user-badge"></i></div><div class="divider-custom-line"></div></div>
 
-          <section class="about section rd-container" id="workex">
-            <!-- <h2 class="section-title">Work Experience</h2> -->
-    
-            <div class="divider-custom">
-              <div class="divider-custom-line"></div>
-              <div class="divider-custom-icon">
-                <i class="bx bxs-user-badge"></i>
-              </div>
-              <div class="divider-custom-line"></div>
-            </div>
-    
-            <div class="">
-              <div class="">
-                <!-- <div class="">
-                  <i
-                    class="fas fa-graduation-cap education__details-icon"
-                  ></i>
-                </div> -->
-                <div class="education__details">
-                  <h3 class="education__title">
-                    <strong>Valenta AI Pvt Ltd</strong> 
-                  </h3>
-                  <span class="education__subtitle"
-                    ><strong>Software Developer</strong></span
-                  >
-                  <div class="education__duration">
-                    <i class="far fa-calendar-alt"></i>
-                    January 2022 - July 2022
-                  </div>
-                  <span class="education__score"
-                    ><i class="bx bx-star"></i> Bengaluru, Karnataka, India</span
-                  >
-                </div>
-                <br />
-                <p class="">
-                  <strong>●</strong>Achieved the development of both <strong>API backend and frontend</strong> components for a single-page application in just over 30 days after onboarding, demonstrating swift adaptability and timely delivery.<br/><br/>
-                  <strong>●</strong>Designed and implemented <strong>5+ user-friendly</strong> interfaces using React.js and templates using Python and Django's view controller and templating language, contributing to a seamless user experience.<br/><br/>
-                  <strong>●</strong>Optimized MySQL database performance by skillfully modifying functions, cursors, queries, triggers, and stored procedures, resulting in an impressive 84% system performance improvement.<br/><br/>
-                  <strong>●</strong>Led team in strategic robotic process design, enhancing financial automation and client communication.<br/><br/>
-          
-                
-                </p></div></div>
-              </section>
+        <!-- Harvard Medical School -->
+        <div class="education__details" style="margin-bottom:2rem;">
+          <h3 class="education__title"><strong>Harvard Medical School</strong></h3>
+          <span class="education__subtitle"><strong>Research AI Engineer (AI &amp; Data)</strong></span>
+          <div class="education__duration"><i class="far fa-calendar-alt"></i> Feb 2024 – Oct 2024</div>
+          <span class="education__score"><i class="bx bx-map"></i> Boston, MA, USA</span>
+          <br /><br />
+          <p>
+            <strong>●</strong> Designed and built a GenAI transcription and analysis pipeline using Python, OpenAI, Whisper, and Streamlit to process large volumes of physician interview recordings — reduced processing time by <strong>50%</strong> through prompt engineering and pipeline optimization.<br/><br/>
+            <strong>●</strong> Wrote Python-based ML models using Neurokit to analyze ECG, RR interval, and PPG signals captured during live surgical procedures, studying heart rate variability and patient outcomes.<br/><br/>
+            <strong>●</strong> Benchmarked Neurokit against Kubios using side-by-side ML comparison models and optimized a sliding window technique to speed up HRV analysis across multi-participant datasets.<br/><br/>
+          </p>
+        </div>
+
+        <div class="divider-custom"><div class="divider-custom-line"></div><div class="divider-custom-icon"><i class="bx bxs-user-badge"></i></div><div class="divider-custom-line"></div></div>
+
+        <!-- Bragr Inc. -->
+        <div class="education__details" style="margin-bottom:2rem;">
+          <h3 class="education__title"><strong>Bragr Inc.</strong></h3>
+          <span class="education__subtitle"><strong>Artificial Intelligence Engineer</strong></span>
+          <div class="education__duration"><i class="far fa-calendar-alt"></i> Aug 2024 – Nov 2024</div>
+          <span class="education__score"><i class="bx bx-map"></i> Boston, MA, USA</span>
+          <br /><br />
+          <p>
+            <strong>●</strong> Implemented RAG pipelines (LangChain, VectorDB, Azure CosmosDB, Azure OpenAI) to query live sports data from ESPN, powering real-time betting intelligence through scalable microservices.<br/><br/>
+            <strong>●</strong> Led full-stack development of the Bragr platform (React JS, Django) and built CI/CD pipelines via GitHub Actions for data querying, web scraping, and AI response generation.<br/><br/>
+          </p>
+        </div>
+
+        <div class="divider-custom"><div class="divider-custom-line"></div><div class="divider-custom-icon"><i class="bx bxs-user-badge"></i></div><div class="divider-custom-line"></div></div>
+
+        <!-- Newmark -->
+        <div class="education__details" style="margin-bottom:2rem;">
+          <h3 class="education__title"><strong>Newmark</strong></h3>
+          <span class="education__subtitle"><strong>Software Engineer</strong></span>
+          <div class="education__duration"><i class="far fa-calendar-alt"></i> June 2023 – Jan 2024</div>
+          <span class="education__score"><i class="bx bx-map"></i> Manhattan, New York, USA</span>
+          <br /><br />
+          <p>
+            <strong>●</strong> Leveraged LangChain and Semantic Kernel to integrate plugin connections with external services and built an interactive SQL generation chat UI using Python and OpenAI LLMs enabling natural language querying across business data.<br/><br/>
+            <strong>●</strong> Connected MySQL and used Matplotlib to generate dynamic property intelligence charts for real estate stakeholders.<br/><br/>
+          </p>
+        </div>
+
+        <div class="divider-custom"><div class="divider-custom-line"></div><div class="divider-custom-icon"><i class="bx bxs-user-badge"></i></div><div class="divider-custom-line"></div></div>
+
+        <!-- Valenta AI -->
+        <div class="education__details" style="margin-bottom:2rem;">
+          <h3 class="education__title"><strong>Valenta AI Private Limited</strong></h3>
+          <span class="education__subtitle"><strong>Software Developer</strong></span>
+          <div class="education__duration"><i class="far fa-calendar-alt"></i> Jan 2022 – July 2022</div>
+          <span class="education__score"><i class="bx bx-map"></i> Bengaluru, Karnataka, India</span>
+          <br /><br />
+          <p>
+            <strong>●</strong> Designed and implemented 5+ product interfaces using React.js and Python/Django; refactored MySQL stored procedures, triggers, and queries delivering an <strong>84% improvement in system performance</strong>.<br/><br/>
+            <strong>●</strong> Led team in strategic robotic process design, enhancing financial automation and client communication.<br/><br/>
+          </p>
+        </div>
+
+      </section>
     
       <!-- Skills -->
       <section class="skills section rd-container" id="skills">
@@ -593,14 +511,16 @@
         <div class="skills__container swiper-container">
           <div class="swiper-wrapper">
             <div class="skills__content swiper-slide">
-              <img
-                src="assets/img/logo/python-icon.svg"
-                alt="Animated Python Logo"
-                title="Python"
-                class="skills__img skills__core-img"
-              />
+              <div class="skills__grid-image">
+                <img
+                  src="assets/img/logo/python-icon.svg"
+                  alt="Python Icon"
+                  title="Python"
+                  class="skills__img"
+                />
+              </div>
               <h3 class="skills__title">AI &amp; GenAI</h3>
-              <p class="skills__description">LLMs, RAG, Claude (Anthropic), OpenAI, LangChain, LlamaIndex, Hugging Face, Streamlit, Databricks Genie, NLP, Chatbots</p>
+              <p class="skills__description">LLMs, RAG, OpenAI, LangChain, LlamaIndex, Hugging Face, Streamlit, Databricks Genie, NLP</p>
             </div>
 
             <div class="skills__content swiper-slide">
@@ -1480,5 +1400,79 @@
 
     <!-- Main JS -->
     <script src="assets/js/main.js"></script>
+
+    <script>
+      // Typing animation
+      (function () {
+        const el = document.getElementById('typing-text');
+        if (!el) return;
+        const texts = [
+          'Head of AI Engineering',
+          'Software AI Engineer',
+          'RAG Pipeline Builder',
+          'LLM Systems Architect'
+        ];
+        let ti = 0, ci = 0, deleting = false;
+        function tick() {
+          const cur = texts[ti];
+          el.textContent = deleting ? cur.slice(0, ci - 1) : cur.slice(0, ci + 1);
+          deleting ? ci-- : ci++;
+          if (!deleting && ci === cur.length) {
+            setTimeout(() => { deleting = true; tick(); }, 2000);
+            return;
+          }
+          if (deleting && ci === 0) {
+            deleting = false;
+            ti = (ti + 1) % texts.length;
+          }
+          setTimeout(tick, deleting ? 45 : 95);
+        }
+        tick();
+      })();
+
+      // Animated counters
+      (function () {
+        const counters = document.querySelectorAll('.about__number[data-target]');
+        const obs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            const el = entry.target;
+            const raw = el.getAttribute('data-target');
+            const match = raw.match(/^([^0-9]*)([0-9.]+)([^0-9]*)$/);
+            if (!match) return;
+            const pre = match[1], num = match[2], suf = match[3];
+            const target = parseFloat(num);
+            const isDecimal = num.includes('.');
+            const duration = 1600;
+            const start = performance.now();
+            function step(now) {
+              const progress = Math.min((now - start) / duration, 1);
+              const ease = 1 - Math.pow(1 - progress, 3);
+              const val = target * ease;
+              el.textContent = pre + (isDecimal ? val.toFixed(1) : Math.floor(val)) + suf;
+              if (progress < 1) requestAnimationFrame(step);
+              else el.textContent = pre + num + suf;
+            }
+            requestAnimationFrame(step);
+            obs.unobserve(el);
+          });
+        }, { threshold: 0.5 });
+        counters.forEach(function (c) { obs.observe(c); });
+      })();
+
+      // Fade-in sections on scroll
+      (function () {
+        const sections = document.querySelectorAll('.fade-in-section');
+        const obs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) {
+              e.target.classList.add('is-visible');
+              obs.unobserve(e.target);
+            }
+          });
+        }, { threshold: 0.08 });
+        sections.forEach(function (s) { obs.observe(s); });
+      })();
+    </script>
   </body>
 </html>
