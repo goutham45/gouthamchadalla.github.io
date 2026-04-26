@@ -73,10 +73,73 @@
         transform: translateY(24px);
         transition: opacity 0.65s ease, transform 0.65s ease;
       }
-      .fade-in-section.is-visible {
-        opacity: 1;
-        transform: none;
+      .fade-in-section.is-visible { opacity: 1; transform: none; }
+
+      /* ===Case Study Cards=== */
+      .case-study-btn {
+        display: inline-block;
+        margin-top: 0.6rem;
+        padding: 0.35rem 1rem;
+        border: 1.5px solid var(--first-color);
+        color: var(--first-color);
+        background: transparent;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background 0.2s, color 0.2s;
       }
+      .case-study-btn:hover { background: var(--first-color); color: #fff; }
+      body.dark-mode .case-study-btn { border-color: #a29bfe; color: #a29bfe; }
+      body.dark-mode .case-study-btn:hover { background: #a29bfe; color: #0f0f1a; }
+      .case-study-panel {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+      }
+      .case-study-inner {
+        margin-top: 1rem;
+        padding: 1rem 1.2rem;
+        background: #f5f0f0;
+        border-left: 3px solid var(--first-color);
+        border-radius: 4px;
+        font-size: 0.88rem;
+        line-height: 1.7;
+      }
+      body.dark-mode .case-study-inner { background: #1a1a2e; border-color: #a29bfe; color: #ccc; }
+      .case-study-inner h4 { font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--first-color); margin: 0.9rem 0 0.25rem; }
+      .case-study-inner h4:first-child { margin-top: 0; }
+      .cs-project-label { display: block; font-size: 0.85rem; font-weight: 700; color: var(--first-color); background: rgba(62,14,18,0.07); padding: 0.3rem 0.7rem; border-radius: 4px; margin: 1rem 0 0.4rem; }
+      .case-study-inner p { margin-bottom: 0.4rem; }
+      body.dark-mode .case-study-inner h4 { color: #a29bfe; }
+      .tech-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.3rem; }
+      .tech-tag {
+        padding: 2px 10px;
+        background: var(--first-color);
+        color: #fff;
+        border-radius: 12px;
+        font-size: 0.72rem;
+        font-weight: 600;
+      }
+      body.dark-mode .tech-tag { background: #a29bfe; color: #0f0f1a; }
+
+      /* ===Copy Email Button=== */
+      .copy-email-btn {
+        background: none;
+        border: 1.5px solid var(--first-color);
+        color: var(--first-color);
+        border-radius: 16px;
+        padding: 2px 10px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        cursor: pointer;
+        margin-left: 0.4rem;
+        transition: background 0.2s, color 0.2s;
+        vertical-align: middle;
+      }
+      .copy-email-btn:hover { background: var(--first-color); color: #fff; }
+      body.dark-mode .copy-email-btn { border-color: #a29bfe; color: #a29bfe; }
+      body.dark-mode .copy-email-btn:hover { background: #a29bfe; color: #0f0f1a; }
     </style>
   </head>
 
@@ -434,6 +497,43 @@
             <strong>●</strong> Built an integrated <strong>Technician Onboarding Verification System</strong> using AWS Rekognition with liveness detection, face comparison, and selfie-to-ID matching — saving <strong>100+ manual hours/month</strong> and eliminating identity fraud risk.<br/><br/>
             <strong>●</strong> Developed and embedded a <strong>Databricks Genie RAG platform</strong> with a custom semantic layer into an internal business portal, empowering executives to query operational data in natural language.<br/><br/>
           </p>
+          <button class="case-study-btn" data-target="cs-lhg">View Case Study ▾</button>
+          <div class="case-study-panel" id="cs-lhg">
+            <div class="case-study-inner">
+
+              <h4>Problem</h4>
+              <p>In home warranty and insurance, claim resolution speed is the single biggest driver of customer satisfaction — and the biggest operational cost. Liberty Home Guard faced three interconnected challenges that were limiting growth, increasing costs, and creating friction for customers:</p>
+              <p><strong>1. Claim Processing Bottleneck:</strong> Every incoming claim required a live agent to manually diagnose the issue, coordinate with technicians, and negotiate service pricing. Long wait times frustrated homeowners, per-claim costs were high, and the process couldn't scale without hiring more agents.</p>
+              <p><strong>2. Technician Onboarding & Verification:</strong> Verifying each technician's identity, trade license, Certificate of Insurance (COI), and Driver's License was 100% manual — a human reviewer checked every document individually. This caused onboarding delays, created undetectable identity fraud risk, and couldn't handle volume spikes.</p>
+              <p><strong>3. Business Intelligence Gap:</strong> Business users and executives had no self-service access to operational data. Understanding claim volumes, technician performance, regional bottlenecks, or cost trends required filing an engineering ticket — slowing down decision-making and preventing proactive problem identification across the business.</p>
+
+              <h4>Solution — 3 Production AI Systems</h4>
+
+              <span class="cs-project-label">Project 1 — Voice AI Agent (Claim Intake, Resolution & Technician Negotiation)</span>
+              <p>Architected and deployed a production Voice AI agent using FastAPI as the backend, ElevenLabs for real-time voice synthesis, and AWS for infrastructure. The agent handles the Technician Diagnosis collection in the claim lifecycle: it conducts a structured diagnostic conversation with Technicians to identify the issue (appliance failure type, severity, history), cross-references coverage terms to determine valid resolutions, and then engages directly with technicians in real-time to negotiate service rates within approved cost bands — completely eliminating the need for a live agent on every call. Deployed as a containerized microservice on AWS ECS/ECR with App Runner for auto-scaling and ALB routing traffic across instances.</p>
+
+              <span class="cs-project-label">Project 2 — Technician Onboarding Verification System</span>
+              <p>Built a zero-manual-intervention identity and document verification pipeline using AWS Rekognition. The system runs a multi-stage verification flow: liveness detection ensures the person is physically present (not a photo or video spoof); face comparison matches the live selfie against the government-issued photo ID; selfie-to-ID matching applies confidence scoring to flag borderline cases. In parallel, automated document extraction parses COI, Trade License, and Driver's License documents — validating expiry dates, coverage amounts, and license categories without any human reviewer involved at any stage. The entire flow completes in seconds.</p>
+
+              <span class="cs-project-label">Project 3 — Databricks Genie RAG Platform</span>
+              <p>Embedded a natural language business intelligence layer into the internal business portal using Databricks Genie with a custom semantic layer. Business users and executives can now ask questions like "What are the top claim categories in Q1 by region?" or "Which technicians have the highest resolution rates this month?" in plain English and get accurate, data-backed answers instantly. The custom semantic layer maps business terminology directly to underlying data models — ensuring query accuracy without requiring SQL knowledge — and surfaces patterns and bottlenecks that previously required days of engineering effort to uncover.</p>
+
+              <h4>Tech Stack</h4>
+              <div class="tech-tags">
+                <span class="tech-tag">FastAPI</span><span class="tech-tag">Python</span><span class="tech-tag">AWS ECS</span><span class="tech-tag">AWS ECR</span><span class="tech-tag">AWS EC2</span><span class="tech-tag">App Runner</span><span class="tech-tag">ALB</span><span class="tech-tag">ElevenLabs</span><span class="tech-tag">AWS Rekognition</span><span class="tech-tag">Databricks Genie</span><span class="tech-tag">LangChain</span><span class="tech-tag">Docker</span><span class="tech-tag">GitHub Actions</span>
+              </div>
+
+              <h4>Impact</h4>
+              <p>● <strong>40% reduction</strong> in average claim processing time — directly improving customer satisfaction and reducing agent overhead<br/>
+              ● <strong>$1.6M+</strong> in annual cost savings and revenue growth from reduced staffing costs and faster claim resolution cycles<br/>
+              ● <strong>100+ manual hours saved per month</strong> on technician onboarding — a process that now runs at zero human cost<br/>
+              ● <strong>Zero identity fraud incidents</strong> post-launch — eliminating a previously undetectable risk vector<br/>
+              ● Technician verification <strong>scaled to handle high volumes</strong> with no additional headcount<br/>
+              ● Business users and executives <strong>self-serving operational data in natural language</strong> — cutting decision lag from days to seconds<br/>
+              ● Proactive <strong>business problem identification</strong> now possible without engineering involvement</p>
+
+            </div>
+          </div>
         </div>
 
         <div class="divider-custom"><div class="divider-custom-line"></div><div class="divider-custom-icon"><i class="bx bxs-user-badge"></i></div><div class="divider-custom-line"></div></div>
@@ -450,6 +550,58 @@
             <strong>●</strong> Wrote Python-based ML models using Neurokit to analyze ECG, RR interval, and PPG signals captured during live surgical procedures, studying heart rate variability and patient outcomes.<br/><br/>
             <strong>●</strong> Benchmarked Neurokit against Kubios using side-by-side ML comparison models and optimized a sliding window technique to speed up HRV analysis across multi-participant datasets.<br/><br/>
           </p>
+          <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:0.6rem;">
+            <button class="case-study-btn" data-target="cs-hms1">Case Study 1 — GenAI Transcription Pipeline ▾</button>
+            <button class="case-study-btn" data-target="cs-hms2">Case Study 2 — ML Signal Analysis (HRV) ▾</button>
+          </div>
+          <div class="case-study-panel" id="cs-hms1">
+            <div class="case-study-inner">
+              <h4>Problem</h4>
+              <p>The HMS research team was running a large-scale study involving physician interviews across multiple specialties. Each interview was recorded and needed to be transcribed, then analyzed for clinical decision-making patterns, reasoning styles, and thematic insights. Medical audio is notoriously difficult to transcribe accurately due to dense specialized terminology, varying accents, and overlapping speech. Manually transcribing and analyzing hundreds of hours of recordings was taking weeks per analysis cycle — a serious bottleneck for the research timeline and budget.</p>
+
+              <h4>Solution</h4>
+              <p>Designed and built an end-to-end GenAI pipeline with four layers:</p>
+              <p><strong>1. Transcription:</strong> Used OpenAI Whisper — chosen specifically for its superior accuracy with medical terminology over standard speech-to-text tools — to transcribe physician recordings at scale with high fidelity.</p>
+              <p><strong>2. Structured Analysis:</strong> Applied targeted prompt engineering on GPT to extract structured insights from each transcript: key clinical decision points, reasoning patterns, terminology usage frequency, thematic categories, and cross-physician comparison signals.</p>
+              <p><strong>3. Pipeline Optimization:</strong> Implemented batched async processing and response caching to maximize throughput and minimize API costs — enabling the pipeline to scale across hundreds of recordings without proportional cost increases.</p>
+              <p><strong>4. Streamlit Research UI:</strong> Built a clean, researcher-facing interface to upload recordings, review transcriptions, query AI-generated analysis, and export structured reports — requiring zero technical knowledge to operate independently.</p>
+
+              <h4>Tech Stack</h4>
+              <div class="tech-tags">
+                <span class="tech-tag">Python</span><span class="tech-tag">OpenAI GPT</span><span class="tech-tag">Whisper</span><span class="tech-tag">Streamlit</span><span class="tech-tag">Pandas</span><span class="tech-tag">Prompt Engineering</span><span class="tech-tag">PostgreSQL</span>
+              </div>
+
+              <h4>Impact</h4>
+              <p>● <strong>50% reduction</strong> in total processing time across the full pipeline<br/>
+              ● Consistent, structured analytical output replacing inconsistent manual review<br/>
+              ● Researchers fully self-serving analysis without any engineering involvement<br/>
+              ● Scalable to any volume of recordings — no additional human effort required per recording</p>
+            </div>
+          </div>
+
+          <div class="case-study-panel" id="cs-hms2">
+            <div class="case-study-inner">
+              <h4>Problem</h4>
+              <p>A separate research track involved capturing physiological signals — ECG, RR intervals, and PPG — from patients during live surgical procedures to study the relationship between heart rate variability (HRV) and surgical outcomes. The existing workflow relied on Kubios, a commercial HRV analysis tool requiring manual, per-participant operation. It couldn't process multiple participants simultaneously, produced no programmatic output for downstream ML analysis, and introduced operator variability that compromised reproducibility. The team needed a scalable, automated, and validated signal analysis workflow.</p>
+
+              <h4>Solution</h4>
+              <p><strong>Automated HRV Pipeline:</strong> Built Python-based ML models using Neurokit2 to programmatically extract and compute HRV metrics from ECG, RR interval, and PPG signals — time-domain, frequency-domain, and non-linear HRV measures — fully automated with no manual steps.</p>
+              <p><strong>Sliding Window Technique:</strong> Implemented a sliding window approach to process continuous physiological signals across varying time windows, enabling consistent HRV metric extraction regardless of recording length or sampling rate variations between participants.</p>
+              <p><strong>Multi-participant Parallelization:</strong> Restructured the pipeline to process multiple participant datasets simultaneously — converting a sequential, manual workflow into a parallelized automated one.</p>
+              <p><strong>Kubios Benchmarking Study:</strong> Ran a rigorous side-by-side comparison of Neurokit2 outputs vs. Kubios on identical datasets using ML comparison models — validating that automated results matched or exceeded manual analysis accuracy, building trust with the research team to fully adopt the new pipeline.</p>
+
+              <h4>Tech Stack</h4>
+              <div class="tech-tags">
+                <span class="tech-tag">Python</span><span class="tech-tag">Neurokit2</span><span class="tech-tag">Kubios</span><span class="tech-tag">Scikit-learn</span><span class="tech-tag">Pandas</span><span class="tech-tag">NumPy</span><span class="tech-tag">Matplotlib</span>
+              </div>
+
+              <h4>Impact</h4>
+              <p>● <strong>Validated Neurokit2</strong> as an accurate, reproducible replacement for manual Kubios workflow<br/>
+              ● <strong>Significantly improved throughput</strong> — multi-participant datasets processed in parallel vs. sequential manual operation<br/>
+              ● <strong>Consistent, reproducible HRV metrics</strong> across all participants — eliminating operator variability<br/>
+              ● Programmatic output enabling downstream ML correlation studies between HRV patterns and surgical outcomes</p>
+            </div>
+          </div>
         </div>
 
         <div class="divider-custom"><div class="divider-custom-line"></div><div class="divider-custom-icon"><i class="bx bxs-user-badge"></i></div><div class="divider-custom-line"></div></div>
@@ -465,6 +617,31 @@
             <strong>●</strong> Implemented RAG pipelines (LangChain, VectorDB, Azure CosmosDB, Azure OpenAI) to query live sports data from ESPN, powering real-time betting intelligence through scalable microservices.<br/><br/>
             <strong>●</strong> Led full-stack development of the Bragr platform (React JS, Django) and built CI/CD pipelines via GitHub Actions for data querying, web scraping, and AI response generation.<br/><br/>
           </p>
+          <button class="case-study-btn" data-target="cs-bragr">View Case Study ▾</button>
+          <div class="case-study-panel" id="cs-bragr">
+            <div class="case-study-inner">
+              <h4>Problem</h4>
+              <p>Sports betting is a precision business — users demand real-time, accurate intelligence on live games, player stats, odds movements, and historical trends. Bragr faced two core engineering challenges: (1) Querying live, constantly changing sports data from ESPN — unstructured, high-volume, and updating by the minute — and generating accurate AI responses grounded in that data within seconds. Using a general-purpose LLM without retrieval would fail because models hallucinate statistics. (2) Delivering this intelligence through a full-featured, production-grade user platform with a web UI, authenticated APIs, and automated backend data pipelines — all within a fast-moving startup timeline.</p>
+
+              <h4>Solution</h4>
+              <span class="cs-project-label">RAG Pipeline — Live Sports Intelligence</span>
+              <p>Built a complete retrieval-augmented generation pipeline with LangChain as the orchestration layer, Azure CosmosDB as the vector store for semantic search over ESPN content, and Azure OpenAI (GPT) as the inference model. Automated web scraping microservices continuously ingested live ESPN data (player stats, game scores, injury reports, historical records), chunked and embedded it into CosmosDB, and refreshed the index in near real-time — ensuring every AI-generated response was grounded in current, factual sports data rather than model hallucinations.</p>
+
+              <span class="cs-project-label">Full-Stack Platform — Bragr Web Application</span>
+              <p>Led end-to-end development of the Bragr platform: React JS frontend delivering an interactive, real-time user experience; Django REST API backend handling authentication, query routing, and response delivery; and GitHub Actions CI/CD pipelines automating testing, Docker container builds, and environment deployments — enabling fast iteration without manual release overhead.</p>
+
+              <h4>Tech Stack</h4>
+              <div class="tech-tags">
+                <span class="tech-tag">LangChain</span><span class="tech-tag">VectorDB</span><span class="tech-tag">Azure CosmosDB</span><span class="tech-tag">Azure OpenAI</span><span class="tech-tag">Python</span><span class="tech-tag">React JS</span><span class="tech-tag">Django</span><span class="tech-tag">REST API</span><span class="tech-tag">GitHub Actions</span><span class="tech-tag">Docker</span>
+              </div>
+
+              <h4>Impact</h4>
+              <p>● Real-time, hallucination-free betting intelligence grounded in live ESPN data<br/>
+              ● Fully automated data ingestion pipeline — zero manual data management after deployment<br/>
+              ● Complete production platform — frontend, backend, APIs, CI/CD — shipped end-to-end<br/>
+              ● Scalable microservices architecture handling high-frequency concurrent user queries</p>
+            </div>
+          </div>
         </div>
 
         <div class="divider-custom"><div class="divider-custom-line"></div><div class="divider-custom-icon"><i class="bx bxs-user-badge"></i></div><div class="divider-custom-line"></div></div>
@@ -480,6 +657,31 @@
             <strong>●</strong> Leveraged LangChain and Semantic Kernel to integrate plugin connections with external services and built an interactive SQL generation chat UI using Python and OpenAI LLMs enabling natural language querying across business data.<br/><br/>
             <strong>●</strong> Connected MySQL and used Matplotlib to generate dynamic property intelligence charts for real estate stakeholders.<br/><br/>
           </p>
+          <button class="case-study-btn" data-target="cs-newmark">View Case Study ▾</button>
+          <div class="case-study-panel" id="cs-newmark">
+            <div class="case-study-inner">
+              <h4>Problem</h4>
+              <p>Newmark's commercial real estate teams held vast amounts of property, transaction, and market data in MySQL databases — but extracting insights required writing SQL queries or filing reports with the data engineering team. Neither was fast or accessible for time-sensitive real estate decisions. Two specific gaps: (1) <strong>Data accessibility</strong> — brokers and analysts couldn't self-serve queries, every data request required an engineer, creating a bottleneck that slowed decisions. (2) <strong>Visual intelligence</strong> — property performance insights existed as raw numbers in tables but weren't surfaced as actionable visual charts stakeholders could act on immediately.</p>
+
+              <h4>Solution</h4>
+              <span class="cs-project-label">Natural Language SQL Generation Chat UI</span>
+              <p>Built a conversational chat interface in Python backed by LangChain and Semantic Kernel — allowing business users to type questions in plain English ("What are the top 10 properties by transaction volume in Q3?") and get accurate SQL queries automatically generated, executed against the live MySQL database, and results returned in a readable format. Semantic Kernel's plugin system was used to connect to multiple external real estate data services, expanding the queryable data surface beyond just internal databases to include market feeds and listing data.</p>
+
+              <span class="cs-project-label">Dynamic Property Intelligence Charts</span>
+              <p>Integrated Matplotlib-powered chart generation directly into the query response pipeline — automatically converting query results into visual property intelligence reports (market trend lines, property performance comparisons, transaction volume breakdowns) in a single step. What previously required a data analyst to manually build a chart now happened automatically as part of answering a question.</p>
+
+              <h4>Tech Stack</h4>
+              <div class="tech-tags">
+                <span class="tech-tag">LangChain</span><span class="tech-tag">Semantic Kernel</span><span class="tech-tag">OpenAI LLMs</span><span class="tech-tag">Python</span><span class="tech-tag">MySQL</span><span class="tech-tag">Matplotlib</span><span class="tech-tag">REST APIs</span>
+              </div>
+
+              <h4>Impact</h4>
+              <p>● Business stakeholders querying production data in <strong>plain English — zero SQL knowledge required</strong><br/>
+              ● Eliminated the engineering bottleneck for routine data requests<br/>
+              ● Dynamic visual chart generation turning data queries into immediate, shareable reports<br/>
+              ● Faster, more informed decision-making for real estate brokers and analysts</p>
+            </div>
+          </div>
         </div>
 
         <div class="divider-custom"><div class="divider-custom-line"></div><div class="divider-custom-icon"><i class="bx bxs-user-badge"></i></div><div class="divider-custom-line"></div></div>
@@ -495,6 +697,21 @@
             <strong>●</strong> Designed and implemented 5+ product interfaces using React.js and Python/Django; refactored MySQL stored procedures, triggers, and queries delivering an <strong>84% improvement in system performance</strong>.<br/><br/>
             <strong>●</strong> Led team in strategic robotic process design, enhancing financial automation and client communication.<br/><br/>
           </p>
+          <button class="case-study-btn" data-target="cs-valenta">View Case Study ▾</button>
+          <div class="case-study-panel" id="cs-valenta">
+            <div class="case-study-inner">
+              <h4>Problem</h4>
+              <p>Legacy system with slow database queries, poor UI, and manual financial processes causing operational bottlenecks.</p>
+              <h4>Solution</h4>
+              <p>Redesigned 5+ product interfaces with React.js/Django, rewrote critical MySQL stored procedures and triggers, and automated financial workflows using UiPath RPA.</p>
+              <h4>Tech Stack</h4>
+              <div class="tech-tags">
+                <span class="tech-tag">React.js</span><span class="tech-tag">Python</span><span class="tech-tag">Django</span><span class="tech-tag">MySQL</span><span class="tech-tag">UiPath</span>
+              </div>
+              <h4>Impact</h4>
+              <p>84% improvement in system performance · Streamlined financial automation · Full SPA shipped within 30 days of onboarding</p>
+            </div>
+          </div>
         </div>
 
       </section>
@@ -510,96 +727,52 @@
 
         <div class="skills__container swiper-container">
           <div class="swiper-wrapper">
+
             <div class="skills__content swiper-slide">
               <div class="skills__grid-image">
-                <img
-                  src="assets/img/logo/python-icon.svg"
-                  alt="Python Icon"
-                  title="Python"
-                  class="skills__img"
-                />
+                <img src="assets/img/logo/python-icon.svg" alt="Python" title="Python" class="skills__img" />
               </div>
-              <h3 class="skills__title">AI &amp; GenAI</h3>
-              <p class="skills__description">LLMs, RAG, OpenAI, LangChain, LlamaIndex, Hugging Face, Streamlit, Databricks Genie, NLP</p>
+              <h3 class="skills__title">Preferred Environment</h3>
+              <p class="skills__description">GenAI, LLMs, Claude (Anthropic), RAG, Chatbots, Streamlit, NLP, PyGWalker, Databricks Genie</p>
             </div>
 
             <div class="skills__content swiper-slide">
               <div class="skills__grid-image">
-                <img
-                  src="assets/img/logo/python-icon.svg"
-                  alt="Python Icon"
-                  title="Python"
-                  class="skills__img"
-                />
-                <img
-                  src="assets/img/logo/javascript-seeklogo.com.svg"
-                  alt="Javascript Icon"
-                  title="JavaScript"
-                  class="skills__img"
-                />
+                <img src="assets/img/logo/python-icon.svg" alt="Python" title="Python" class="skills__img" />
+                <img src="assets/img/logo/javascript-seeklogo.com.svg" alt="JavaScript" title="JavaScript" class="skills__img" />
               </div>
               <h3 class="skills__title">Languages</h3>
-              <p class="skills__description">Python, JavaScript, C++, SQL, Java, Go, R, Verilog</p>
+              <p class="skills__description">Python, C++, JavaScript, SQL, Java, Go, R, Verilog, Visual Basic</p>
             </div>
 
             <div class="skills__content swiper-slide">
               <div class="skills__grid-image">
-                <img
-                  src="assets/img/logo/github-seeklogo.com.svg"
-                  alt="GitHub Icon"
-                  title="Github"
-                  class="skills__img"
-                />
-                <img
-                  src="assets/img/logo/git-scm-icon.svg"
-                  alt="Git Icon"
-                  title="Git"
-                  class="skills__img"
-                />
+                <img src="assets/img/logo/github-seeklogo.com.svg" alt="GitHub" title="GitHub" class="skills__img" />
+                <img src="assets/img/logo/git-scm-icon.svg" alt="Git" title="Git" class="skills__img" />
               </div>
               <h3 class="skills__title">Cloud &amp; DevOps</h3>
-              <p class="skills__description">AWS (ECS, ECR, S3, EC2, App Runner), Azure (OpenAI, CosmosDB), GCP, Docker, Kubernetes, GitHub Actions, UiPath</p>
+              <p class="skills__description">AWS (ECS, ECR, S3), Azure (OpenAI, CosmosDB), GCP, Docker, Kubernetes, GitHub Actions, UiPath</p>
             </div>
 
             <div class="skills__content swiper-slide">
               <div class="skills__grid-image">
-                <img
-                  src="assets/img/logo/w3_html5-icon.svg"
-                  alt="HTML5 Icon"
-                  title="HTML 5"
-                  class="skills__img"
-                />
-                <img
-                  src="assets/img/logo/javascript-js-seeklogo.com.svg"
-                  alt="JavaScript Icon"
-                  title="JavaScript"
-                  class="skills__img"
-                />
+                <img src="assets/img/logo/w3_html5-icon.svg" alt="HTML5" title="HTML5" class="skills__img" />
+                <img src="assets/img/logo/javascript-js-seeklogo.com.svg" alt="JavaScript" title="JavaScript" class="skills__img" />
               </div>
               <h3 class="skills__title">Frameworks</h3>
-              <p class="skills__description">FastAPI, React.js, Django, Node.js, Express.js, Angular, REST API, LangChain, LlamaIndex, Hugging Face</p>
+              <p class="skills__description">FastAPI, React.js, Django, Node.js, Express.js, Angular, REST API, RPA, LlamaIndex, LangChain, Hugging Face</p>
             </div>
 
             <div class="skills__content swiper-slide">
               <div class="skills__grid-image">
-                <img
-                  src="assets/img/logo/mysql-seeklogo.com.svg"
-                  alt="MySQL Icon"
-                  title="MySQL"
-                  class="skills__img"
-                />
-                <img
-                  src="assets/img/logo/mongodb-ar21.svg"
-                  alt="MongoDB Icon"
-                  title="MongoDB"
-                  class="skills__img_mongo"
-                />
+                <img src="assets/img/logo/mysql-seeklogo.com.svg" alt="MySQL" title="MySQL" class="skills__img" />
+                <img src="assets/img/logo/mongodb-ar21.svg" alt="MongoDB" title="MongoDB" class="skills__img_mongo" />
               </div>
               <h3 class="skills__title">Data &amp; Databases</h3>
               <p class="skills__description">MySQL, PostgreSQL, MongoDB, DynamoDB, NoSQL, SSIS, SSMS, Pandas, Matplotlib</p>
             </div>
-          </div>
 
+          </div>
           <div class="swiper-pagination"></div>
         </div>
       </section>
@@ -1266,9 +1439,10 @@
             <div class="contact__box">
               <i class="bx bx-envelope contact__icon"></i>
               <h3 class="contact__title">Gmail</h3>
-              <span class="contact__description"
-                >gouthamcm.work<wbr />@gmail.com</span
-              >
+              <span class="contact__description">
+                gouthamcm.work@gmail.com
+                <button class="copy-email-btn" id="copy-email-btn"><i class="bx bx-copy"></i> Copy</button>
+              </span>
             </div>
           </div>
 
@@ -1472,6 +1646,28 @@
           });
         }, { threshold: 0.08 });
         sections.forEach(function (s) { obs.observe(s); });
+      })();
+
+      // Case study toggle
+      document.querySelectorAll('.case-study-btn').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const panel = document.getElementById(btn.getAttribute('data-target'));
+          const isOpen = panel.style.maxHeight && panel.style.maxHeight !== '0px';
+          panel.style.maxHeight = isOpen ? '0px' : panel.scrollHeight + 'px';
+          btn.textContent = isOpen ? 'View Case Study ▾' : 'Hide Case Study ▴';
+        });
+      });
+
+      // Copy email
+      (function () {
+        const btn = document.getElementById('copy-email-btn');
+        if (!btn) return;
+        btn.addEventListener('click', function () {
+          navigator.clipboard.writeText('gouthamcm.work@gmail.com').then(function () {
+            btn.innerHTML = '<i class="bx bx-check"></i> Copied!';
+            setTimeout(function () { btn.innerHTML = '<i class="bx bx-copy"></i> Copy'; }, 2000);
+          });
+        });
       })();
     </script>
   </body>
