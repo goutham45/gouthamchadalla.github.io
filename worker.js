@@ -84,12 +84,11 @@ RESPONSE STYLE: Be concise, sharp, and impressive. Lead with a direct answer, su
 
     const requestBody = {
       contents: [
+        { role: 'user', parts: [{ text: systemPrompt }] },
+        { role: 'model', parts: [{ text: "Understood. I'm Goutham's AI portfolio assistant. I'll answer questions about his professional background, skills, experience, and projects." }] },
         ...geminiHistory,
         { role: 'user', parts: [{ text: message }] }
       ],
-      systemInstruction: {
-        parts: [{ text: systemPrompt }]
-      },
       generationConfig: {
         temperature: 0.7,
         maxOutputTokens: 500
@@ -99,7 +98,7 @@ RESPONSE STYLE: Be concise, sharp, and impressive. Lead with a direct answer, su
     let response, data
     try {
       response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${env.GEMINI_API_KEY}`,
+        `https://generativelanguage.googleapis.com/v1beta/models/gemma-3-27b-it:generateContent?key=${env.GEMINI_API_KEY}`,
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -113,13 +112,19 @@ RESPONSE STYLE: Be concise, sharp, and impressive. Lead with a direct answer, su
       })
     }
 
+    if (response.status === 429) {
+      return new Response(JSON.stringify({ reply: "I'm receiving too many requests right now. Please wait a moment and try again!" }), {
+        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+      })
+    }
+
     if (!response.ok || !data.candidates || !data.candidates[0]) {
       return new Response(JSON.stringify({ reply: "Sorry, I couldn't process that right now. Please try again in a moment." }), {
         headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
       })
     }
 
-    const reply = data.candidates[0].content.parts[0].text
+    const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || "I didn't get a response. Please try again."
 
     return new Response(JSON.stringify({ reply }), {
       headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
