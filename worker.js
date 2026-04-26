@@ -75,6 +75,49 @@ EDUCATION:
 - MS Computer Science and Engineering | University at Buffalo, SUNY | Dec 2023 | GPA: 3.9
 - BTech Computer Science and Engineering | Presidency University, India | July 2022
 
+CASE STUDIES:
+
+LIBERTY HOME GUARD — 3 Production AI Systems:
+
+Project 1 — Voice AI Agent (Claim Intake, Resolution & Technician Negotiation):
+Problem: Every claim required a live agent to manually diagnose issues, coordinate with technicians, and negotiate pricing. High costs, slow resolution, couldn't scale.
+Solution: Architected a production Voice AI agent using FastAPI, ElevenLabs (real-time voice synthesis), and AWS. The agent conducts structured diagnostic conversations with technicians, identifies appliance failure type/severity, cross-references coverage terms, and negotiates service rates within approved cost bands — eliminating the need for a live agent on every call. Deployed as a containerized microservice on AWS ECS/ECR with App Runner auto-scaling and ALB routing.
+Impact: 40% reduction in claim processing time. $1.6M+ annual cost savings and revenue growth.
+
+Project 2 — Technician Onboarding Verification System:
+Problem: Verifying technician identity, trade license, COI, and Driver's License was 100% manual — causing delays, identity fraud risk, and scaling problems.
+Solution: Built a zero-manual-intervention pipeline using AWS Rekognition with liveness detection (prevents photo/video spoofing), face comparison (selfie vs. government ID), selfie-to-ID matching with confidence scoring, and automated document extraction parsing COI, Trade License, and Driver's License — validating expiry dates, coverage amounts, and license categories in seconds.
+Impact: 100+ manual hours saved per month. Zero identity fraud incidents post-launch.
+
+Project 3 — Databricks Genie RAG Platform:
+Problem: Business users had no self-service access to operational data — every data request required filing an engineering ticket.
+Solution: Embedded a natural language BI layer into the internal business portal using Databricks Genie with a custom semantic layer that maps business terminology to underlying data models. Executives query operational data in plain English (e.g. "top claim categories in Q1 by region?") and get accurate, data-backed answers instantly.
+Impact: Decision lag reduced from days to seconds. Business users fully self-serving without engineering involvement.
+
+HARVARD MEDICAL SCHOOL — 2 Case Studies:
+
+Case Study 1 — GenAI Transcription Pipeline:
+Problem: Research team needed to transcribe and analyze hundreds of hours of physician interview recordings. Medical audio is hard to transcribe accurately. Manual process was taking weeks per cycle.
+Solution: Built an end-to-end GenAI pipeline: OpenAI Whisper for high-accuracy medical transcription, GPT with targeted prompt engineering to extract structured clinical insights (decision points, reasoning patterns, thematic categories), batched async processing and response caching for scale, and a Streamlit research UI for researchers to operate independently.
+Tech: Python, OpenAI GPT, Whisper, Streamlit, Pandas, PostgreSQL.
+Impact: 50% reduction in processing time. Researchers fully self-serving analysis with zero engineering involvement.
+
+Case Study 2 — ML Signal Analysis (HRV):
+Problem: Existing workflow used Kubios (commercial tool) for HRV analysis — manual, per-participant, no programmatic output, couldn't process multiple participants, operator variability compromised reproducibility.
+Solution: Built Python-based ML models using Neurokit2 to extract HRV metrics (time-domain, frequency-domain, non-linear) from ECG, RR interval, and PPG signals. Implemented sliding window technique for consistent extraction across varying recording lengths. Parallelized multi-participant processing. Ran rigorous Kubios benchmarking study to validate accuracy.
+Tech: Python, Neurokit2, Kubios, Scikit-learn, Pandas, NumPy, Matplotlib.
+Impact: Validated Neurokit2 as accurate replacement for Kubios. Significantly improved throughput. Eliminated operator variability.
+
+BRAGR INC. — Sports Intelligence Platform:
+Problem: Sports betting requires real-time, accurate intelligence on live games and stats. General LLMs hallucinate statistics. Also needed a full production platform fast.
+Solution: RAG pipeline with LangChain, Azure CosmosDB (vector store), Azure OpenAI (GPT). Automated ESPN data scraping microservices continuously ingested live data and refreshed the index in near real-time. Full-stack platform: React JS frontend, Django REST API backend, GitHub Actions CI/CD.
+Impact: Real-time hallucination-free betting intelligence. Zero manual data management post-deployment. Complete production platform shipped end-to-end.
+
+NEWMARK — Real Estate Intelligence:
+Problem: Brokers and analysts couldn't self-serve data queries — every request required an engineer. Property insights existed as raw numbers, not visual charts.
+Solution: Conversational chat UI using LangChain and Semantic Kernel — users type questions in plain English, SQL is auto-generated and executed against live MySQL. Matplotlib-powered chart generation automatically converts query results into visual property intelligence reports.
+Impact: Business stakeholders querying production data in plain English with zero SQL knowledge. Engineering bottleneck eliminated for routine data requests.
+
 RESPONSE STYLE: Be concise, sharp, and impressive. Lead with a direct answer, support with specifics. Use markdown naturally — bold for emphasis, bullet points for lists. Keep responses under 150 words unless more detail is asked.`
 
     const geminiHistory = history.map(h => ({
