@@ -126,9 +126,8 @@ RESPONSE STYLE: Be concise, sharp, and impressive. Lead with a direct answer, su
     }))
 
     const requestBody = {
+      systemInstruction: { parts: [{ text: systemPrompt }] },
       contents: [
-        { role: 'user', parts: [{ text: systemPrompt }] },
-        { role: 'model', parts: [{ text: "Understood. I'm Goutham's AI portfolio assistant. I'll answer questions about his professional background, skills, experience, and projects." }] },
         ...geminiHistory,
         { role: 'user', parts: [{ text: message }] }
       ],
@@ -138,17 +137,16 @@ RESPONSE STYLE: Be concise, sharp, and impressive. Lead with a direct answer, su
       }
     }
 
-    let response, data
+    let response
     try {
       response = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemma-3-27b-it:generateContent?key=${env.GEMINI_API_KEY}`,
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite:streamGenerateContent?alt=sse&key=${env.GEMINI_API_KEY}`,
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(requestBody)
         }
       )
-      data = await response.json()
     } catch (e) {
       return new Response(JSON.stringify({ reply: 'Network error reaching AI service: ' + e.message }), {
         headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
@@ -161,16 +159,52 @@ RESPONSE STYLE: Be concise, sharp, and impressive. Lead with a direct answer, su
       })
     }
 
-    if (!response.ok || !data.candidates || !data.candidates[0]) {
-      return new Response(JSON.stringify({ reply: "Sorry, I couldn't process that right now. Please try again in a moment." }), {
+    if (!response.ok) {
+      const errText = await response.text()
+      let errorDetail = errText
+      try { errorDetail = JSON.parse(errText)?.error?.message || errText } catch {}
+      return new Response(JSON.stringify({ reply: `Error (${response.status}): ${errorDetail}` }), {
         headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
       })
     }
 
-    const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || "I didn't get a response. Please try again."
+    const { readable, writable } = new TransformStream()
+    const writer = writable.getWriter()
+    const encoder = new TextEncoder()
 
-    return new Response(JSON.stringify({ reply }), {
-      headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+    ;(async () => {
+      const reader = response.body.getReader()
+      const decoder = new TextDecoder()
+      let buffer = ''
+      try {
+        while (true) {
+          const { done, value } = await reader.read()
+          if (done) break
+          buffer += decoder.decode(value, { stream: true })
+          const lines = buffer.split('\n')
+          buffer = lines.pop()
+          for (const line of lines) {
+            if (!line.startsWith('data: ')) continue
+            const jsonStr = line.slice(6).trim()
+            if (!jsonStr || jsonStr === '[DONE]') continue
+            try {
+              const chunk = JSON.parse(jsonStr)
+              const text = chunk?.candidates?.[0]?.content?.parts?.[0]?.text
+              if (text) await writer.write(encoder.encode(text))
+            } catch {}
+          }
+        }
+      } finally {
+        await writer.close()
+      }
+    })()
+
+    return new Response(readable, {
+      headers: {
+        'Content-Type': 'text/plain; charset=utf-8',
+        'Access-Control-Allow-Origin': '*',
+        'X-Content-Type-Options': 'nosniff',
+      }
     })
   }
 }
