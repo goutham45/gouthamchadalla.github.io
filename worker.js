@@ -31,7 +31,7 @@ export default {
 Here is everything about Goutham:
 
 PROFESSIONAL SUMMARY:
-Goutham Chadalla Manjunath is a Head of AI Engineering and Software AI Engineer with 6+ years of deep domain expertise and 3+ years of professional experience shipping production-grade AI systems. He has worked at Harvard Medical School and currently leads AI Engineering at Liberty Home Guard — Forbes-awarded Best & Top Home Warranty for Customer Service in the USA. Expertise spans LLMs, RAG pipelines, agentic microservices, and production AI systems.
+Goutham Chadalla Manjunath is a computer science and AI engineering leader — from hands-on AI research at Harvard Medical School to serving as Head of AI Engineering at Liberty Home Guard, Forbes-awarded Best & Top Home Warranty for Customer Service in the USA. Built a foundation of 6+ years of deep domain expertise and 3+ years of professional experience shipping enterprise-grade AI systems. Leads the engineering team while staying hands-on in the code, designing system architecture, building microservices, and cloud deployments end to end. Expertise spans LLMs, RAG pipelines, problem identification and solving, and agentic microservices delivering systems that reduce costs, eliminate manual effort, and drive revenue growth at scale.
 
 CONTACT:
 - Email: gouthamcm.work@gmail.com
@@ -42,33 +42,36 @@ CONTACT:
 
 WORK EXPERIENCE:
 
-1. Head of AI Engineering (Software AI Engineer) | Liberty Home Guard | Brooklyn, New York | Oct 2024 - Present
-Liberty Home Guard is a Forbes-awarded home warranty and insurance company.
-- Voice AI Agent: FastAPI + ElevenLabs + AWS — handles technician diagnosis collection, cross-references coverage terms, negotiates service rates. Reduced claim processing time by 40%, driving $1.6M+ annual cost savings.
-- Technician Onboarding Verification System: AWS Rekognition — liveness detection, face comparison, selfie-to-ID matching, document extraction for COI/Trade License/Driver's License. Saves 100+ manual hours/month, zero identity fraud.
-- Databricks Genie RAG Platform: Natural language BI layer with custom semantic layer — executives query operational data in plain English.
-- All deployed on AWS ECS/ECR, EC2, App Runner, ALB.
+1. Head of AI Engineering | Liberty Home Guard | Brooklyn, New York | Jan 2026 - Present
+- Architected and deployed enterprise-grade AI microservices using FastAPI + Python on AWS ECS/ECR, EC2, App Runner, and ALB; codified business logic from human expertise into systematic rules, leading a team of engineers to drive operational efficiency, accuracy, and cost savings.
+- Deployed an Intelligent Voice AI agent (FastAPI, ElevenLabs, AWS) for claim diagnosis, resolutions, and technician negotiation; reduced claim processing time by 40%, driving $1.6M+ in annual cost savings and revenue growth.
+- Embedded a Databricks Genie RAG platform with a custom semantic layer; enabled sales, revenue, and operations teams to identify bottlenecks and drive efficiency gains via natural language querying, replacing PowerBI reporting.
 
-2. Research AI Engineer (AI & Data) | Harvard Medical School | Boston, MA | Feb 2024 - Oct 2024
-- GenAI Transcription Pipeline: Python, OpenAI GPT, Whisper, Streamlit — transcribed physician interview recordings, reduced processing time by 50%.
-- ML Signal Analysis: Neurokit2 ML models to analyze ECG, RR interval, PPG signals during surgical procedures. Sliding window HRV analysis. Benchmarked against Kubios.
+2. Software AI Engineer | Liberty Home Guard | Brooklyn, New York | Oct 2024 - Dec 2025
+- Functioned as a forward deployed engineer — embedded with business stakeholders to map operational workflows, built an internal AI Recommendation Engine to streamline the claims resolution process, and customized AI systems to business requirements, driving revenue growth and operational efficiency; recognized with promotion to Head of AI Engineering.
+- Built a Technician Onboarding Verification System using AWS Rekognition, OCR, pytesseract, and PyTorch for liveness detection, face comparison, selfie-to-ID matching, and COI, Trade License, Driver's License validation; streamlined verification for 500+ monthly onboardings, saving 160+ manual hours/month and $100K+/year in operational costs, eliminating fraud risk at scale.
 
-3. Artificial Intelligence Engineer | Bragr Inc. | Boston, MA | Aug 2024 - Nov 2024
-- RAG pipelines (LangChain, VectorDB, Azure CosmosDB, Azure OpenAI) for live ESPN sports data.
-- Full-stack Bragr platform (React JS, Django) with GitHub Actions CI/CD.
+3. Research AI Engineer | Harvard Medical School | Boston, MA | Feb 2024 - Oct 2024
+- Designed and built a GenAI transcription and analysis pipeline using Python, OpenAI, Whisper, and Streamlit to process physician interview recordings; reduced processing time by 50% via targeted prompt engineering and pipeline optimization.
+- Developed Python-based ML models using Neurokit to analyze ECG, RR interval, and PPG signals from live surgical procedures, studying the relationship between heart rate variability and patient outcomes.
+- Benchmarked Neurokit against Kubios using side-by-side ML comparisons and optimized a sliding window technique to accelerate HRV analysis across multi-participant datasets, improving throughput and result consistency.
 
-4. Software Engineer | Newmark | Manhattan, New York | June 2023 - Jan 2024
-- Natural language SQL generation chat UI (LangChain, Semantic Kernel, OpenAI LLMs).
-- Dynamic property intelligence charts (MySQL + Matplotlib).
+4. Founding AI Engineer (Part-time Contract) | Bragr Inc. | Boston, MA | Aug 2024 - Nov 2024
+- Designed and built core AI features for a sports intelligence platform from inception; implemented RAG pipelines (LangChain, VectorDB, Azure CosmosDB, Azure OpenAI) to deliver real-time betting intelligence from live ESPN data.
+- Led full-stack development of the Bragr platform (React JS, Django) and built CI/CD pipelines via GitHub Actions for automated data querying, web scraping, and AI response generation.
 
-5. Software Developer | Valenta AI Private Limited | India | Jan 2022 - July 2022
-- 5+ product interfaces (React.js, Python/Django). 84% system performance improvement via MySQL optimization.
+5. AI Software Engineer | Newmark | Manhattan, New York | June 2023 - Jan 2024
+- Leveraged LangChain and Semantic Kernel to integrate external service plugins and built an interactive SQL generation chat UI using Python and OpenAI LLMs for natural language querying across business data.
+- Built dynamic property intelligence charts using MySQL and Matplotlib to support real estate stakeholder decision-making.
+
+6. Software Developer | Valenta AI Private Limited | Bengaluru, India | Jan 2022 - July 2022
+- Designed and implemented 5+ enterprise product interfaces using React.js and Python/Django; refactored MySQL stored procedures and queries delivering an 84% improvement in system performance.
 
 SKILLS:
-- Preferred Environment: GenAI, LLMs, Claude (Anthropic), RAG, Chatbots, Streamlit, NLP, PyGWalker, Databricks Genie
+- AI & ML Tools: GenAI, LLMs, Claude (Anthropic), RAG, Agentic AI, Chatbots, Streamlit, NLP, PyGWalker, Databricks Genie
 - Languages: Python, C++, JavaScript, SQL, Java, Go, R, Verilog, Visual Basic
 - Cloud & DevOps: AWS (ECS, ECR, S3), Azure (OpenAI, CosmosDB), GCP, Docker, Kubernetes, GitHub Actions, UiPath
-- Frameworks: FastAPI, React.js, Django, Node.js, Express.js, Angular, REST API, LlamaIndex, LangChain, Hugging Face
+- Frameworks: FastAPI, React.js, Django, Node.js, Express.js, Angular, REST API, RPA, LlamaIndex, LangChain, Hugging Face
 - Data & Databases: MySQL, PostgreSQL, MongoDB, DynamoDB, NoSQL, SSIS, SSMS, Pandas, Matplotlib
 
 EDUCATION:
@@ -77,44 +80,45 @@ EDUCATION:
 
 CASE STUDIES:
 
-LIBERTY HOME GUARD — 3 Production AI Systems:
+LIBERTY HOME GUARD — Production AI Systems:
 
-Project 1 — Voice AI Agent (Claim Intake, Resolution & Technician Negotiation):
+Voice AI Agent (Claim Intake, Resolution & Technician Negotiation):
 Problem: Every claim required a live agent to manually diagnose issues, coordinate with technicians, and negotiate pricing. High costs, slow resolution, couldn't scale.
-Solution: Architected a production Voice AI agent using FastAPI, ElevenLabs (real-time voice synthesis), and AWS. The agent conducts structured diagnostic conversations with technicians, identifies appliance failure type/severity, cross-references coverage terms, and negotiates service rates within approved cost bands — eliminating the need for a live agent on every call. Deployed as a containerized microservice on AWS ECS/ECR with App Runner auto-scaling and ALB routing.
+Solution: Architected a production Voice AI agent using FastAPI, ElevenLabs (real-time voice synthesis), and AWS. The agent conducts structured diagnostic conversations with technicians, identifies appliance failure type/severity, cross-references coverage terms, and negotiates service rates within approved cost bands. Deployed on AWS ECS/ECR with App Runner auto-scaling and ALB routing.
 Impact: 40% reduction in claim processing time. $1.6M+ annual cost savings and revenue growth.
 
-Project 2 — Technician Onboarding Verification System:
-Problem: Verifying technician identity, trade license, COI, and Driver's License was 100% manual — causing delays, identity fraud risk, and scaling problems.
-Solution: Built a zero-manual-intervention pipeline using AWS Rekognition with liveness detection (prevents photo/video spoofing), face comparison (selfie vs. government ID), selfie-to-ID matching with confidence scoring, and automated document extraction parsing COI, Trade License, and Driver's License — validating expiry dates, coverage amounts, and license categories in seconds.
-Impact: 100+ manual hours saved per month. Zero identity fraud incidents post-launch.
+Technician Onboarding Verification System:
+Problem: Verifying technician identity, trade license, COI, and Driver's License was 100% manual — causing delays, fraud risk, and scaling problems.
+Solution: Built a zero-manual-intervention pipeline using AWS Rekognition, OCR, pytesseract, and PyTorch with liveness detection, face comparison, selfie-to-ID matching with confidence scoring, and automated document extraction parsing COI, Trade License, and Driver's License.
+Impact: 500+ monthly onboardings streamlined. 160+ manual hours saved per month. $100K+/year in operational cost savings. Fraud risk eliminated at scale.
 
-Project 3 — Databricks Genie RAG Platform:
+Databricks Genie RAG Platform:
 Problem: Business users had no self-service access to operational data — every data request required filing an engineering ticket.
-Solution: Embedded a natural language BI layer into the internal business portal using Databricks Genie with a custom semantic layer that maps business terminology to underlying data models. Executives query operational data in plain English (e.g. "top claim categories in Q1 by region?") and get accurate, data-backed answers instantly.
+Solution: Embedded a natural language BI layer using Databricks Genie with a custom semantic layer, replacing PowerBI reporting. Executives query operational data in plain English and get accurate, data-backed answers instantly.
 Impact: Decision lag reduced from days to seconds. Business users fully self-serving without engineering involvement.
+
+AI Recommendation Engine:
+Built an internal AI Recommendation Engine as a forward deployed engineer to streamline the claims resolution process — mapping operational workflows and customizing AI systems to business requirements, driving revenue growth and operational efficiency.
 
 HARVARD MEDICAL SCHOOL — 2 Case Studies:
 
-Case Study 1 — GenAI Transcription Pipeline:
-Problem: Research team needed to transcribe and analyze hundreds of hours of physician interview recordings. Medical audio is hard to transcribe accurately. Manual process was taking weeks per cycle.
-Solution: Built an end-to-end GenAI pipeline: OpenAI Whisper for high-accuracy medical transcription, GPT with targeted prompt engineering to extract structured clinical insights (decision points, reasoning patterns, thematic categories), batched async processing and response caching for scale, and a Streamlit research UI for researchers to operate independently.
+GenAI Transcription Pipeline:
+Problem: Research team needed to transcribe and analyze hundreds of hours of physician interview recordings. Manual process was taking weeks per cycle.
+Solution: Built an end-to-end GenAI pipeline: OpenAI Whisper for medical transcription, GPT with targeted prompt engineering to extract structured clinical insights, batched async processing and response caching for scale, and a Streamlit research UI.
 Tech: Python, OpenAI GPT, Whisper, Streamlit, Pandas, PostgreSQL.
 Impact: 50% reduction in processing time. Researchers fully self-serving analysis with zero engineering involvement.
 
-Case Study 2 — ML Signal Analysis (HRV):
-Problem: Existing workflow used Kubios (commercial tool) for HRV analysis — manual, per-participant, no programmatic output, couldn't process multiple participants, operator variability compromised reproducibility.
-Solution: Built Python-based ML models using Neurokit2 to extract HRV metrics (time-domain, frequency-domain, non-linear) from ECG, RR interval, and PPG signals. Implemented sliding window technique for consistent extraction across varying recording lengths. Parallelized multi-participant processing. Ran rigorous Kubios benchmarking study to validate accuracy.
-Tech: Python, Neurokit2, Kubios, Scikit-learn, Pandas, NumPy, Matplotlib.
-Impact: Validated Neurokit2 as accurate replacement for Kubios. Significantly improved throughput. Eliminated operator variability.
+ML Signal Analysis (HRV):
+Problem: Existing workflow used Kubios (commercial tool) — manual, per-participant, no programmatic output, operator variability compromised reproducibility.
+Solution: Built Python-based ML models using Neurokit to extract HRV metrics from ECG, RR interval, and PPG signals. Sliding window technique for consistent extraction. Parallelized multi-participant processing. Rigorous Kubios benchmarking study to validate accuracy.
+Tech: Python, Neurokit, Kubios, Scikit-learn, Pandas, NumPy, Matplotlib.
+Impact: Validated Neurokit as accurate replacement for Kubios. Significantly improved throughput. Eliminated operator variability.
 
 BRAGR INC. — Sports Intelligence Platform:
-Problem: Sports betting requires real-time, accurate intelligence on live games and stats. General LLMs hallucinate statistics. Also needed a full production platform fast.
-Solution: RAG pipeline with LangChain, Azure CosmosDB (vector store), Azure OpenAI (GPT). Automated ESPN data scraping microservices continuously ingested live data and refreshed the index in near real-time. Full-stack platform: React JS frontend, Django REST API backend, GitHub Actions CI/CD.
+Solution: RAG pipeline with LangChain, Azure CosmosDB (vector store), Azure OpenAI (GPT). Automated ESPN data scraping microservices continuously ingested live data. Full-stack platform: React JS frontend, Django REST API backend, GitHub Actions CI/CD.
 Impact: Real-time hallucination-free betting intelligence. Zero manual data management post-deployment. Complete production platform shipped end-to-end.
 
 NEWMARK — Real Estate Intelligence:
-Problem: Brokers and analysts couldn't self-serve data queries — every request required an engineer. Property insights existed as raw numbers, not visual charts.
 Solution: Conversational chat UI using LangChain and Semantic Kernel — users type questions in plain English, SQL is auto-generated and executed against live MySQL. Matplotlib-powered chart generation automatically converts query results into visual property intelligence reports.
 Impact: Business stakeholders querying production data in plain English with zero SQL knowledge. Engineering bottleneck eliminated for routine data requests.
 
